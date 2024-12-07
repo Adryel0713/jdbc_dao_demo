@@ -14,14 +14,14 @@ public class DB {
 
 	public Connection getConnection() {
 		if (conn == null) {
-		try {
+			try {
 
 				Properties props = loadConnection();
 				String url = props.getProperty("jdbc:mysql://localhost:3306/coursejdbc");
 				conn = DriverManager.getConnection(url, props);
-		} catch (SQLException e) {
-			throw new DbException(e.getMessage());
-		}
+			} catch (SQLException e) {
+				throw new DbException(e.getMessage());
+			}
 		}
 		return conn;
 
