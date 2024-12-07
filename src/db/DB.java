@@ -10,14 +10,14 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class DB {
-	private Connection conn;
+	private static Connection conn = null;
 
-	public Connection getConnection() {
+	public static Connection getConnection() {
 		if (conn == null) {
 			try {
 
 				Properties props = loadConnection();
-				String url = props.getProperty("jdbc:mysql://localhost:3306/coursejdbc");
+				String url = props.getProperty("dburl");
 				conn = DriverManager.getConnection(url, props);
 			} catch (SQLException e) {
 				throw new DbException(e.getMessage());
@@ -27,7 +27,7 @@ public class DB {
 
 	}
 
-	public Properties loadConnection() {
+	public static Properties loadConnection() {
 
 		try (FileInputStream fl = new FileInputStream("db.properties")) {
 			Properties props = new Properties();
