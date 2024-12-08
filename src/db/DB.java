@@ -38,7 +38,7 @@ public class DB {
 		}
 	}
 
-	public void closeConnection() {
+	public static void closeConnection() {
 		if (conn != null) {
 			try {
 				conn.close();
@@ -48,7 +48,7 @@ public class DB {
 		}
 	}
 
-	public void closeStatement(Statement st) {
+	public static void closeStatement(Statement st) {
 		try {
 			st.close();
 		} catch (SQLException e) {
@@ -56,7 +56,7 @@ public class DB {
 		}
 	}
 
-	public void closeResultSet(ResultSet rs) {
+	public static void closeResultSet(ResultSet rs) {
 		try {
 			rs.close();
 		} catch (SQLException e) {
